@@ -1,3 +1,7 @@
+# Code taken and slighly modified from https://pypi.org/project/wellpathpy/
+# https://github.com/Zabamund/wellpathpy
+#  wellpathpy library allows to estimate the wells surveys. 
+
 import numpy as np
 from scipy import interpolate
 import pandas as pd
