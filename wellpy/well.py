@@ -328,7 +328,7 @@ class WellsGroup:
             _wells_dict[i.name] = i
         self._wells = _wells_dict
         
-    def wells_surveys(self, wells:list=None, projection1d = False, azi=90, center=None):
+    def wells_surveys(self, wells:list=None, projection1d = False, azi=90, center=None,to_crs=4326):
         """
         Get a DataFrame with the wells surveys
         Input:
@@ -355,12 +355,11 @@ class WellsGroup:
             if self.wells[well].survey is None:
                 continue
             else:
-                _s = self.wells[well].survey.copy()
+                _s = self.wells[well].survey.to_crs(to_crs)
                 _s['well'] = well 
                 _s = _s.reset_index()
                 _wells_survey = _wells_survey.append(gpd.GeoDataFrame(_s))
 
-        _wells_survey.crs = self.crs
         if projection1d == True:
             _pr,c = projection_1d(_wells_survey[['easting','northing']].values, azi, center=center)
             _wells_survey['projection'] = _pr

@@ -1,14 +1,7 @@
-python
 numpy
 pandas
-matplotlib
-seaborn
 scipy
 geopandas
 pyvista
+shapely
 folium
-sqlalchemy
-lasio
-psycopg2
-scikit-image
-zmapio
